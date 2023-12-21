@@ -6,6 +6,12 @@ from openpyxl import load_workbook
 
 """
 
+def only_digits(str: str) -> str:
+    "оставляем в строке только цифры"
+    res = re.sub("[^0-9]","", str)
+    print(res)
+    return res
+
 def compare_cells(num: int) -> bool:
     "получает на вход номер ряда и сравнивает ячейки B и C в этом ряду. Возвращает True в случае совпадения"
     num_cell_B = 'B' + str(num)
