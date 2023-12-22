@@ -6,10 +6,12 @@ from openpyxl import load_workbook
 
 """
 
+wb = load_workbook('sber18122023.xlsx')
+ws = wb['Аня']
+
 def only_digits(str: str) -> str:
     "оставляем в строке только цифры"
     res = re.sub("[^0-9]","", str)
-    print(res)
     return res
 
 def find_model_num(s1:str, s2: str) -> bool:
@@ -18,7 +20,6 @@ def find_model_num(s1:str, s2: str) -> bool:
     for i in s1.split(' '):
         if re.findall('\d{2,15}', i) != []:
             list1.append(i)
-    print(list1)
     return only_digits(list1[0]) in only_digits(s2)
 
 def compare_cells(num: int) -> bool:
@@ -38,9 +39,12 @@ def compare_cells(num: int) -> bool:
             print("ex = ", ex)
             return False
 
-wb = load_workbook('sber18122023.xlsx')
-ws = wb['Аня']
+
+
 
 
 if __name__ == '__main__':
-    print('my result = ', compare_cells(1200))
+    # print('my res = ', compare_cells(1199))
+    while True:
+        a = int(input())
+        print(compare_cells(a))
