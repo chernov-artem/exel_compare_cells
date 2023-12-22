@@ -19,7 +19,7 @@ def find_model_num(s1:str, s2: str) -> bool:
         if re.findall('\d{2,15}', i) != []:
             list1.append(i)
     print(list1)
-    return only_digits(list1[0]) in s2
+    return only_digits(list1[0]) in only_digits(s2)
 
 def compare_cells(num: int) -> bool:
     "получает на вход номер ряда и сравнивает ячейки B и C в этом ряду. Возвращает True в случае совпадения"
@@ -32,12 +32,15 @@ def compare_cells(num: int) -> bool:
     if tmp1 != [] and tmp2 != []:
         try:
             print(tmp1.split(' ')[0], tmp2.split(' ')[0])
+            print(find_model_num(tmp1, tmp2))
+            return True
         except Exception as ex:
             print("ex = ", ex)
+            return False
 
 wb = load_workbook('sber18122023.xlsx')
 ws = wb['Аня']
 
 
 if __name__ == '__main__':
-    compare_cells(1198)
+    print('my result = ', compare_cells(1200))
