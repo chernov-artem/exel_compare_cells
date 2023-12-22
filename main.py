@@ -12,6 +12,15 @@ def only_digits(str: str) -> str:
     print(res)
     return res
 
+def find_model_num(s1:str, s2: str) -> bool:
+    "находит в строке1 последовательность из 2-15 цифрт и ищет его в строке2"
+    list1 = []
+    for i in s1.split(' '):
+        if re.findall('\d{2,15}', i) != []:
+            list1.append(i)
+    print(list1)
+    return only_digits(list1[0]) in s2
+
 def compare_cells(num: int) -> bool:
     "получает на вход номер ряда и сравнивает ячейки B и C в этом ряду. Возвращает True в случае совпадения"
     num_cell_B = 'B' + str(num)
